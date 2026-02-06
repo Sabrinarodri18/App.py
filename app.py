@@ -7,18 +7,26 @@ restaurantes = [{'nome': 'Sasa´s burguer', 'categoria':'Lanches', 'ativo':False
 
 #o def ele é uma função 
 def exibir_nome_do_programa():
+    '''Nesta função é exibido o nome do programa assim que abre o app'''
     print('𝚂𝚊𝚋𝚘𝚛 𝚎𝚡𝚙𝚛𝚎𝚜𝚜\n')
 
 def exibir_opcoes():
+    '''Essa função exibe as opções disponiveis do app'''
     print('1. Cadastrar restaurante')
     print('2. Listar restaurantes cadastrados')
     print('3. Alternar estado do restaurante')
     print('4. Sair do app\n')
 
 def Finalizar_app():
-     exibir_subtitulo('Finalizando o app\n')
+    '''Essa função finaliza o app '''
+    exibir_subtitulo('Finalizando o app\n')
 
-def exibir_subtitulo(texto):   #ele permite sempre mudar o subtitulo de acordo com o que estiver fazendo no menu
+def exibir_subtitulo(texto):  
+    ''' Essa função  exibe um subtítulo estilizado na tela 
+    
+    Inputs:
+    - texto: str - O texto do subtítulo
+    '''
     os.system('cls')  #limpa o terminal 
     linha = '*' *(len(texto)) #ele cria uma linha para o texto acima
     print(linha) #linha encima
@@ -27,14 +35,28 @@ def exibir_subtitulo(texto):   #ele permite sempre mudar o subtitulo de acordo c
     print()
 
 def voltar_ao_menu_principal():
+    '''solicita uma tecla para voltar ao menu principal
+    Outputs:
+    - retorna ao menu principal  
+    '''
     input('\nDigite uma tecla para voltar ao menu principal ')
     main()
 
 def opcao_invalida():
+    ''' Essa função mostra a mensagem 'opção invalida' e volta para o menu principal onde estão as perguntas'''
     print('Opção Invalida!\n')
     voltar_ao_menu_principal()
 
 def cadastrar_novo_restaurante():
+    '''Essa função cadastra um novo restaurante
+    
+    Inputs:
+    - Nome do restaurante
+    - Categoria
+    
+    Outputs:
+    - Adiciona um novo restaurante a lista de restaurantes
+    '''
     exibir_subtitulo('Cadastro de novos restaurantes\n')
     nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
     categoria = input(f'Digite o nome da categoria do restaurante {nome_do_restaurante}: ')
@@ -44,8 +66,14 @@ def cadastrar_novo_restaurante():
     voltar_ao_menu_principal()
 
 def listar_restaurantes():
+    '''
+    Essa função permite listar os restaurantes que foram cadastrados
+    o ijust é usado para definir o espaçamento
+    output
+    - mostra o nome do restaurante, a categoria e se ele esta ativo ou não
+    '''
     exibir_subtitulo('Listando Restaurantes')
-    print(f"{'Nome do restaurante'.ljust(22)} | {'Categoria'.ljust(20)} | Status")
+    print(f"{'Nome do restaurante'.ljust(22)} | {'Categoria'.ljust(20)} | Status")  #ljust Completa com espaços até atingir um tamanho fixo.
     
     #PARA cada restaurante na lista eu listo os restaurantes
     for restaurante in restaurantes:
@@ -58,6 +86,15 @@ def listar_restaurantes():
 
     #ativar e desativar restaurante
 def alternar_estado_restaurante():
+    '''
+    essa função permite ativar ou desativar um restaurante
+    
+    input
+    - se o restaurante digitado pelo usuario existir
+
+    uotput 
+    - ele desativa\ativa o resturante 
+    '''
     exibir_subtitulo('Alternando estado do restaurante')
     nome_restaurante = input('Digite o nome do restaurante que deseja alternar o estado: ')
     restaurante_encontrado = False
@@ -76,6 +113,13 @@ def alternar_estado_restaurante():
 
 
 def escolher_opcao():
+    '''essa função permite que o usuario escolha uma opção para manipular
+    Input
+    -numero inteiro
+
+    output
+    - Opção escolhida pelo usuario 
+    '''
     try:
         opcao_escolhida = int(input('Escolha uma opção: ')) #o int ali força que seja digitado um numero inteiro 
     
@@ -95,6 +139,7 @@ def escolher_opcao():
 
 #main organiza a ordem do programa
 def main():   
+    '''Função principal que inicia o programa '''
     os.system('cls')
     exibir_nome_do_programa()
     exibir_opcoes()
